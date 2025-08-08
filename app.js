@@ -19,9 +19,33 @@ function limpiarInput()
 // Agrega un amigo a la lista de nombres
 function agregarAmigo() 
 {
-        let nombreAmigo = document.getElementById("amigo").value;
-        listanombres.push(nombreAmigo);
-        agregarTexto("listaAmigos", `${listanombres}`);
-        limpiarInput();
-        return nombreAmigo;
+    console.log(listanombres);
+    let nombreAmigo = document.getElementById("amigo").value;
+    if (nombreAmigo.trim() === "")
+        {
+            alert("Por favor, ingrese un nombre");
+        }
+        else
+            {
+                listanombres.push(nombreAmigo);
+                actualizarListaAmigos();
+                limpiarInput();
+            }    
+    
+}
+
+function actualizarListaAmigos()
+{
+    //Obtener un elemento de la lista   
+    lista = document.getElementById ("listaAmigos");
+    //limpiar lista existente 
+    lista.innerHTML = "";
+    //Recorrer array 
+    for (let i = 0; i < listanombres.length; i++) 
+    {   
+        let li = document.createElement("li")
+        li.textContent = listanombres[i]
+        lista.appendChild(li)
+    }
+
 }
