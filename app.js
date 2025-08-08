@@ -2,6 +2,7 @@
 
 //variables
 let listanombres = [];
+let cantidadNombres = 0;
 
 //Agregar texto a elemento HTML
 function agregarTexto(id, texto)
@@ -30,6 +31,8 @@ function agregarAmigo()
                 listanombres.push(nombreAmigo);
                 actualizarListaAmigos();
                 limpiarInput();
+                cantidadNombres++;
+                console.log(cantidadNombres);
             }    
     
 }
@@ -51,5 +54,20 @@ function actualizarListaAmigos()
 }
 function sortearAmigo()
 {
+    let nombreSeleccionado = Math.floor(Math.random()*cantidadNombres);
+    //validar que la lista tenga nombres
+    if (listanombres == "")
+    {
+        alert("La lista está vacía, por favor ingrese un nombre");
+    }
+    else if (listanombres.length === 1)
+    {
+        alert("la lista solo tien un nombre, por favor ingrese otro nombre para realizar el sorteo");
+    }
+    else
+    {
+        console.log(listanombres[nombreSeleccionado]);
+        return agregarTexto("resultado",`Su amigo secreto es ${listanombres[nombreSeleccionado]}`);
+    }
     
 }
