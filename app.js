@@ -49,3 +49,7 @@ function actualizarListaAmigos()
     }
 
 }
+function sortearAmigo()
+{
+    
+}
