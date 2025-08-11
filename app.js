@@ -3,6 +3,8 @@
 //variables
 let listanombres = [];
 let cantidadNombres = 0;
+let nombresSorteados = [];
+
 
 //Agregar texto a elemento HTML
 function agregarTexto(id, texto)
@@ -52,9 +54,15 @@ function actualizarListaAmigos()
     }
 
 }
+
+function elimminarAmigo()
+{
+    
+}
 function sortearAmigo()
 {
     let nombreSeleccionado = Math.floor(Math.random()*cantidadNombres);
+    
     //validar que la lista tenga nombres
     if (listanombres == "")
     {
@@ -64,10 +72,23 @@ function sortearAmigo()
     {
         alert("la lista solo tien un nombre, por favor ingrese otro nombre para realizar el sorteo");
     }
+    else if(nombresSorteados.length == listanombres.length)
+    {
+        return agregarTexto ("resultado", "Todos los nombres han sido sorteados");
+    }
+    else if (nombresSorteados.includes(nombreSeleccionado))
+    {
+        return sortearAmigo();
+    }
     else
     {
         console.log(listanombres[nombreSeleccionado]);
+        nombresSorteados.push(nombreSeleccionado);
+
         return agregarTexto("resultado",`Su amigo secreto es ${listanombres[nombreSeleccionado]}`);
     }
     
 }
+
+
+    
